@@ -1,5 +1,10 @@
 # flutter_dio_net
 flutter网络请求的简单封装
+* [x] 存储token
+* [x] 单例模式
+* [x] 错误拦截
+* [x] 日志打印
+* [x] token拦截
 
 ### 1. 需要添加的依赖
 ```yml
