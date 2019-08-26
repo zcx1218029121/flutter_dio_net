@@ -1,15 +1,17 @@
+import 'package:dio/dio.dart';
+import 'package:gsy_github_app_flutter/common/net/code.dart';
+
 import 'dart:collection';
 
-import 'package:dio/dio.dart';
+import 'package:gsy_github_app_flutter/common/net/interceptors/error_interceptor.dart';
+import 'package:gsy_github_app_flutter/common/net/interceptors/header_interceptor.dart';
+import 'package:gsy_github_app_flutter/common/net/interceptors/log_interceptor.dart';
 
-import 'package:zcx_open_hub/net/code.dart';
-import 'package:zcx_open_hub/net/interceptor/error_interceptors.dart';
-import 'package:zcx_open_hub/net/interceptor/header_interceptors.dart';
-import 'package:zcx_open_hub/net/interceptor/logs_interceptors.dart';
-import 'package:zcx_open_hub/net/interceptor/response_interceptors.dart';
-import 'package:zcx_open_hub/net/interceptor/token_interceptors.dart';
-import 'package:zcx_open_hub/net/result_data.dart';
+import 'package:gsy_github_app_flutter/common/net/interceptors/response_interceptor.dart';
+import 'package:gsy_github_app_flutter/common/net/interceptors/token_interceptor.dart';
+import 'package:gsy_github_app_flutter/common/net/result_data.dart';
 
+///http请求
 class HttpManager {
   static const CONTENT_TYPE_JSON = "application/json";
   static const CONTENT_TYPE_FORM = "application/x-www-form-urlencoded";
@@ -81,20 +83,6 @@ class HttpManager {
   ///清除授权
   clearAuthorization() {
     _tokenInterceptors.clearAuthorization();
-  }
-
-  /// get 方法
-  get(url, params, Map<String, dynamic> header, Options option,
-      {noTip = false}) async {
-    option.method = "get";
-    return netFetch(url, params, header, option);
-  }
-
-  /// post 方法
-  post(url, params, Map<String, dynamic> header, Options option,
-      {noTip = false}) async {
-    option.method = "post";
-    return netFetch(url, params, header, option);
   }
 
   ///获取授权token
