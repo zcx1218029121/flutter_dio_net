@@ -1,4 +1,4 @@
-# flutter
+# flutter_dio_net
 flutter网络请求的简单封装
 
 ### 1. 需要添加的依赖
